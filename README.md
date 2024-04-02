@@ -24,10 +24,60 @@ else:
 
     Activity = "dynamic"
 
-**2** Another Important feature for Activity recognition is Angle of the Activity. Box plots help differentiate between static and dynamic activities by Analysing **Angle between X-axis and gravityMean** and **Y-axis and gravityMean** features.
+
+**2.** Another Important feature for Activity recognition is Angle of the Activity. Box plots help differentiate between static and dynamic activities by Analysing **Angle between X-axis and gravityMean** and **Y-axis and gravityMean** features.
 <br>
 <p align="center">
   <img src="Images/X Angle based Activities.png" alt="Box plot illustrating the distribution of 'Angle between X-axis and gravityMean' values across different activities" /><br>
   <em>Caption: Box plot illustrating the distribution of 'Angle between X-axis and gravityMean' values across different activities</em>
 </p>
 <br>
+From the boxplot we can observe that angle(X,gravityMean) perfectly seperates LAYING from other activities.
+
+if(angle(X,gravityMean)>0.01):
+
+      Activity = "LAYING"
+else:
+
+      Activity = "others"
+
+<br>
+<p align="center">
+  <img src="Images/Y angle based Activities.png" alt="Box plot illustrating the distribution of 'Angle between Y-axis and gravityMean' values across different activities" /><br>
+  <em>Caption: Box plot illustrating the distribution of 'Angle between Y-axis and gravityMean' values across different activities</em>
+</p>
+<br>
+
+Similarly, using Angle between Y-axis and gravityMean we can seperate LAYING from other activities
+
+**3.** Using PCA and t-SNE data can be visualized from a extremely high dimensional space to a low dimensional space and still it retains lots of actual information. Given training data has 561 unqiue features, using PCA and t-SNE let's visualize it to a 2D space.
+<br>
+<p align="center">
+  <img src="Images/PCA.png" alt="PCA visualization depicting the distribution of data points from different activities in reduced-dimensional space" /><br>
+  <em>Caption: PCA visualization depicting the distribution of data points from different activities in reduced-dimensional space</em>
+</p>
+<br>
+<br>
+<p align="center">
+  <img src="Images/t-SNE.png" alt="t-SNE visualization depicting the distribution of data points from different activities in reduced-dimensional space" /><br>
+  <em>Caption: t-SNE visualization depicting the distribution of data points from different activities in reduced-dimensional space.</em>
+</p>
+<br>
+
+# Machine Learning Models:
+
+  * Logistic Regression with Hyperparameter tuning and cross validation:
+      - Accuracy using Logistic Regression: 95.49%
+      - Best parameters: {'max_iter': 200}
+        
+ * Kernel SVM with Hyperparameter tuning and cross validation:
+      - Accuracy using Kernel SVM: 96.60%
+      - Best parameters: {'kernel': 'rbf', 'C': 50}
+  
+ * Decision Tree with Hyperparameter tuning and cross validation:
+      - Accuracy using Decision Tree: 85.29%
+      - Best parameters: {'max_depth': 8}
+  
+ * Random Forest with Hyperparameter tuning and cross validation:
+      - Accuracy using Random Forest: 92.19%
+      - Best parameters: {'n_estimators': 100, 'max_depth': 14}
